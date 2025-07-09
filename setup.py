@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="lama-inpainting",
+    name="lama-inpainting-tmi",
     version="1.0.0",
     description="LaMa: Resolution-robust Large Mask Inpainting with Fourier Convolutions",
     author="Roman Suvorov, Elizaveta Logacheva, Anton Mashikhin, Anastasia Remizova, Arsenii Ashukha, Aleksei Silvestrov, Naejin Kong, Harshith Goka, Kiwoong Park, Victor Lempitsky",

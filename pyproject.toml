@@ -3,7 +3,7 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "lama-inpainting"
+name = "lama-inpainting-tmi"
 version = "1.0.0"
 description = "LaMa: Resolution-robust Large Mask Inpainting with Fourier Convolutions"
 readme = "README.md"
@@ -26,8 +26,11 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9"
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 dependencies = [
     "pyyaml",
     "tqdm",
@@ -50,9 +53,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/advimman/lama"
+"Homepage" = "https://github.com/advimman/lama"
 "Bug Tracker" = "https://github.com/advimman/lama/issues"
-Documentation = "https://advimman.github.io/lama-project/"
 
 [project.scripts]
 lama-predict = "bin.predict:main"
