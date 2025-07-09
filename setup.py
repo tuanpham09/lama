@@ -1,0 +1,45 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="lama-inpainting",
+    version="1.0.0",
+    description="LaMa: Resolution-robust Large Mask Inpainting with Fourier Convolutions",
+    author="Roman Suvorov, Elizaveta Logacheva, Anton Mashikhin, Anastasia Remizova, Arsenii Ashukha, Aleksei Silvestrov, Naejin Kong, Harshith Goka, Kiwoong Park, Victor Lempitsky",
+    author_email="",
+    url="https://github.com/advimman/lama",
+    packages=find_packages(),
+    install_requires=[
+        "pyyaml",
+        "tqdm",
+        "numpy",
+        "easydict==1.9.0",
+        "scikit-image==0.17.2",
+        "scikit-learn==0.24.2",
+        "opencv-python",
+        "tensorflow",
+        "joblib",
+        "matplotlib",
+        "pandas",
+        "albumentations==0.5.2",
+        "hydra-core==1.1.0",
+        "pytorch-lightning==1.2.9",
+        "tabulate",
+        "kornia==0.5.0",
+        "webdataset",
+        "packaging",
+    ],
+    classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Science/Research",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python :: 3",
+    ],
+    python_requires=">=3.6",
+    entry_points={
+        "console_scripts": [
+            "lama-predict=bin.predict:main",
+            "lama-train=bin.train:main",
+        ],
+    },
+) 

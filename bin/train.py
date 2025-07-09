@@ -71,3 +71,16 @@ def main(config: OmegaConf):
 
 if __name__ == '__main__':
     main()
+else:
+    # Khi được import như một module
+    # Cấu hình đường dẫn cho hydra khi chạy như một package đã cài đặt
+    import os
+    import sys
+    from pathlib import Path
+    
+    # Xác định đường dẫn cấu hình tương đối so với vị trí của module này
+    module_path = Path(__file__).parent.parent
+    config_path = os.path.join(module_path, 'configs', 'training')
+    
+    # Cập nhật decorator hydra.main với đường dẫn mới
+    main = hydra.main(config_path=config_path, config_name='tiny_test.yaml')(main)

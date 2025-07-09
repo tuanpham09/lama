@@ -1,0 +1,62 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build package
+        run: python -m build
+
+      - name: Extract release notes
+        id: extract_release_notes
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+          # Extract release notes from CHANGELOG.md
+          RELEASE_NOTES=$(awk -v ver="[$VERSION]" '/^## / { if (p) { exit }; if ($2 == ver) { p=1; next } } p && NF' CHANGELOG.md)
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "$RELEASE_NOTES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref }}
+          name: Release ${{ steps.extract_release_notes.outputs.version }}
+          body: ${{ env.RELEASE_NOTES }}
+          draft: false
+          prerelease: false
+          files: |
+            dist/*.tar.gz
+            dist/*.whl
+
+      - name: Upload to PyPI
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: |
+          twine upload --skip-existing dist/* 

@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lama-inpainting"
+version = "1.0.0"
+description = "LaMa: Resolution-robust Large Mask Inpainting with Fourier Convolutions"
+readme = "README.md"
+authors = [
+    {name = "Roman Suvorov"},
+    {name = "Elizaveta Logacheva"},
+    {name = "Anton Mashikhin"},
+    {name = "Anastasia Remizova"},
+    {name = "Arsenii Ashukha"},
+    {name = "Aleksei Silvestrov"},
+    {name = "Naejin Kong"},
+    {name = "Harshith Goka"},
+    {name = "Kiwoong Park"},
+    {name = "Victor Lempitsky"}
+]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "pyyaml",
+    "tqdm",
+    "numpy",
+    "easydict==1.9.0",
+    "scikit-image==0.17.2",
+    "scikit-learn==0.24.2",
+    "opencv-python",
+    "tensorflow",
+    "joblib",
+    "matplotlib",
+    "pandas",
+    "albumentations==0.5.2",
+    "hydra-core==1.1.0",
+    "pytorch-lightning==1.2.9",
+    "tabulate",
+    "kornia==0.5.0",
+    "webdataset",
+    "packaging",
+]
+
+[project.urls]
+Homepage = "https://github.com/advimman/lama"
+"Bug Tracker" = "https://github.com/advimman/lama/issues"
+Documentation = "https://advimman.github.io/lama-project/"
+
+[project.scripts]
+lama-predict = "bin.predict:main"
+lama-train = "bin.train:main" 

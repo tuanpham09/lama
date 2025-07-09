@@ -30,8 +30,6 @@ LaMa generalizes surprisingly well to much higher resolutions (~2k❗️) than i
   <img src="https://raw.githubusercontent.com/senya-ashukha/senya-ashukha.github.io/master/projects/lama_21/gif_for_lightning_v1_white.gif" />
 </p>
 
-
-
 # LaMa development
 (Feel free to share your paper by creating an issue)
 - https://github.com/geekyutao/Inpaint-Anything --- Inpaint Anything: Segment Anything Meets Image Inpainting
@@ -60,14 +58,34 @@ LaMa generalizes surprisingly well to much higher resolutions (~2k❗️) than i
 - [LaMa with MaskDINO](https://github.com/qwopqwop200/lama-with-maskdino) = MaskDINO object detection + LaMa inpainting with refinement by [@qwopqwop200](https://github.com/qwopqwop200).
 - [CoreMLaMa](https://github.com/mallman/CoreMLaMa) - a script to convert Lama Cleaner's port of LaMa to Apple's Core ML model format.
 
-# Environment setup
+# Cài đặt
+
+## Cài đặt từ PyPI
+
+Cách đơn giản nhất để cài đặt LaMa là thông qua PyPI:
+
+```
+pip install lama-inpainting
+```
+
+Sau khi cài đặt, bạn có thể sử dụng các lệnh sau:
+
+```
+# Dự đoán với mô hình đã huấn luyện
+lama-predict model.path=/path/to/model indir=/path/to/images outdir=/path/to/output
+
+# Huấn luyện mô hình mới
+lama-train -cn lama-fourier location=places_standard
+```
+
+## Cài đặt từ nguồn
 
 ❗️❗️❗️ All yandex dist links went bad, you can download the model from the [google drive](https://drive.google.com/drive/folders/1B2x7eQDgecTL0oh3LSIBDGj0fTxs6Ips?usp=sharing) ❗️❗️❗️
 
-Clone the repo:
+Clone repo:
 `git clone https://github.com/advimman/lama.git`
 
-There are three options of an environment:
+Có ba tùy chọn môi trường:
 
 1. Python virtualenv:
 

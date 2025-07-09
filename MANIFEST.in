@@ -1,0 +1,14 @@
+include LICENSE
+include README.md
+include requirements.txt
+include conda_env.yml
+
+recursive-include configs *.yaml *.txt *.lst
+recursive-include models *.py *.pth *.mat *.csv
+recursive-include saicinpainting *.py
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude __pycache__ 
